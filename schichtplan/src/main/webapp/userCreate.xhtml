@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/general.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="pageNameInfo">
+	<h:outputText value="Create User" />
+</ui:define>
+
+<ui:define name="content">
+
+<h:panelGroup rendered="#{currentUser.user != null}">
+
+<h:form id="form">
+
+<div>
+		<h:commandButton action="/userList.xhtml?faces-redirect=true" value="Zurück" immediate="true" />
+</div>
+<div>
+	<h:messages />
+</div>
+	
+	<h:panelGrid id="grid" border="1" columns="2">
+		<h:outputLabel value="User Name:" for="userName" />
+		<h:inputText id="userName" value="#{userService.user.userName}" required="true" />
+
+		<h:outputLabel value="Password:" for="password" />
+		<h:inputSecret id="password" value="#{userService.password}" />
+
+		<h:outputLabel value="Repeat Password:" for="repeatPassword" />
+		<h:inputSecret id="repeatPassword"
+			value="#{userService.passwordRepeat}" />
+
+		<h:outputLabel value="User Role:" for="userRole" />
+		<h:selectOneListbox id="userRole" value="#{userService.user.userRole}">
+			<f:selectItems value="#{userRoleList.userRoleList}" />
+		</h:selectOneListbox>
+		
+		<h:outputLabel value="Tage Vorher:" for="tageVorher" />
+		<h:inputText id="tageVorher" value="#{userService.user.tageVorher}" />
+		
+		<h:outputLabel value="Tage Nachher:" for="tageNachher" />
+		<h:inputText id="tageNachher" value="#{userService.user.tageNachher}" />
+		
+		<h:outputLabel value="Schichtmodel:" for="schichtModel" />
+		<h:inputText id="schichtModel" value="#{userService.user.schichtModel}" />		
+	</h:panelGrid>
+	
+	<h:commandButton action="#{userService.createUser}" value="Create New User"/>
+	
+</h:form>
+</h:panelGroup>
+
+</ui:define>
+
+</ui:composition>

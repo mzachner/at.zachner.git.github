@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta name="viewport" content="width=1024" />
+<title>Schichtplan</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+	<div id="header">
+		<h:panelGrid id="headerTable" cellpadding="0px" cellspacing="0px" columns="3" styleClass="headerTable"
+		rowClasses="headerTableRow"	columnClasses="headerTableCol1, headerTableCol2, headerTableCol3">
+		<h:panelGroup >
+			<h2 style="padding: 0px; margin: 0px;"><h:outputText id="Logo" value="Schichtplan" /></h2>
+		</h:panelGroup>
+		<h:panelGroup >
+			<ui:insert name="pageNameInfo" />
+		</h:panelGroup>
+		<h:panelGroup >
+		<h:form id="formLogOut" rendered="#{currentUser.user != null}" style="padding: 0px; margin: 0px;">
+			<!--<h:outputLabel value="Current User: " for="currentUser" />
+			<h:outputText value="#{currentUser.user.userName} " />-->
+			<h:commandButton action="#{userService.logOut}" value="Log-Out" style="margin: 0px;" />
+		</h:form>
+		</h:panelGroup>
+		</h:panelGrid>
+	</div>
+	<div id="line" />
+	<div id="content">
+		<ui:insert name="content" />
+	</div>
+	<div id="footer">
+		<ui:insert name="footer" />
+	</div>
+
+</body>
+</html>

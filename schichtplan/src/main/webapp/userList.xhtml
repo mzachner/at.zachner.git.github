@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/general.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="pageNameInfo">
+	<h:outputText value="User-List" />
+</ui:define>
+
+<ui:define name="content">
+
+<h:panelGroup rendered="#{currentUser.user != null}">
+
+	<h:form>
+		<h:commandButton action="/schichtplan.xhtml?faces-redirect=true" value="Zurück" />
+		<h:commandButton action="/userCreate.xhtml?faces-redirect=true" value="Create New User" />
+	</h:form>
+	
+	<h:messages />
+	
+	<h:dataTable value="#{userServiceListService.userServiceList}" var="userServiceEntry" border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="User Name" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.user.userName}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="User Role" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.user.userRole}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Tage Vorher" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.user.tageVorher}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Tage Nachher" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.user.tageNachher}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Schichtmodel" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.user.schichtModel}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Password" />
+			</f:facet>
+			<h:outputText value="#{userServiceEntry.userPasswordString}" />
+		</h:column>
+		<h:column>
+			<h:form>
+				<h:commandLink action="#{userServiceEntry.deleteUser}" value="Delete" />
+			</h:form>
+		</h:column>
+	</h:dataTable>
+
+</h:panelGroup>
+</ui:define>
+
+</ui:composition>

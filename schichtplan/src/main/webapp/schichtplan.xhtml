@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/general.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="pageNameInfo">
+	<h:outputText value="Standard" />
+</ui:define>
+
+<ui:define name="content">
+	
+	<h:panelGroup rendered="#{currentUser.user != null}">
+
+		<h:form id="formMenu">
+			<h:commandButton id="showControls" rendered="#{!currentUser.showControls}"
+				action="#{userService.showControls}"
+				immediate="true" value="Show Controls" />
+			<h:commandButton id="hideControls" rendered="#{currentUser.showControls}"
+				action="#{userService.hideControls}"
+				immediate="true" value="Hide Controls" />
+			<h:commandButton action="/userList.xhtml?faces-redirect=true"
+				value="User Administration" immediate="true"
+				rendered="#{currentUser.user.userRole == 'ADMIN'}" />
+		</h:form>
+
+		<h:form id="formControls" rendered="#{currentUser.showControls}">
+			<h:outputText value="Advanced User Controls sichtbar!!!" />
+		</h:form>
+
+		<h:messages />
+
+		<h:dataTable value="#{plan.listeVorher}" var="listeVorher" 
+			styleClass="schichtplanTable" rowClasses="schichtplanTableRow"
+			columnClasses="schichtplanTableCol1, schichtplanTableCol2">
+			<h:column>
+				<h:outputText value="#{listeVorher.datum}">
+					<f:convertDateTime pattern="EEEE, d.M.y"
+						locale="#{plan.homeLocale}" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{listeVorher.datumInfo}" />
+			</h:column>
+		</h:dataTable>
+
+		<h:panelGrid columns="2" style="color:blue"
+			styleClass="schichtplanTable" rowClasses="schichtplanTableRow"
+			columnClasses="schichtplanTableCol1, schichtplanTableCol2">
+			<h:outputText value="#{plan.eintragHeute.datum}">
+				<f:convertDateTime pattern="EEEE, d.M.y" locale="#{plan.homeLocale}" />
+			</h:outputText>
+			<h:outputText value="#{plan.eintragHeute.datumInfo}" />
+		</h:panelGrid>
+
+		<h:dataTable value="#{plan.listeNachher}" var="listeNachher"
+			styleClass="schichtplanTable" rowClasses="schichtplanTableRow"
+			columnClasses="schichtplanTableCol1, schichtplanTableCol2">
+			<h:column>
+				<h:outputText value="#{listeNachher.datum}">
+					<f:convertDateTime pattern="EEEE, d.M.y"
+						locale="#{plan.homeLocale}" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{listeNachher.datumInfo}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:panelGroup>
+	
+</ui:define>
+
+</ui:composition>

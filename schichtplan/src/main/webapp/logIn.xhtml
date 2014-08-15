@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/general.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="pageNameInfo">
+	<h:outputText value="Log-In" />
+</ui:define>
+
+<ui:define name="content">
+	
+	<h:panelGroup rendered="#{currentUser.user == null}">
+	<h:messages />
+	<h:form id="formLogIn">
+<!-- 		<h:panelGrid id="logInTable" columns="2" cellpadding="0px" cellspacing="0px" styleClass="logInTable" -->
+<!-- 		rowClasses="logInTableRow"	 -->
+<!-- 		columnClasses="logInTableCol1, logInTableCol2"> -->
+			<h:outputLabel value="User Name:" for="userName" />
+			<div class="inputCorrection">
+				<h:inputText id="userName" value="#{userService.user.userName}" 
+				styleClass="userNameField" required="true" />
+			</div>
+			
+			<h:outputLabel value="Password:" for="password" />
+			<div class="inputCorrection">
+			<h:inputSecret id="password" value="#{userService.password}" 
+			styleClass="passwordField" required="true" />
+			</div>
+<!-- 		</h:panelGrid> -->
+			
+			<h:commandButton  styleClass="logInButton" action="#{userService.logInUser}" value="Log-In" />
+
+	</h:form>
+	</h:panelGroup>
+	
+</ui:define>
+
+</ui:composition>

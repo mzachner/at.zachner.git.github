@@ -1,0 +1,83 @@
+.schichtplanTable {
+	border: 1px solid black;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.schichtplanTableRow {
+}
+
+.schichtplanTableCol1 {
+	width: 50%;
+	border-right: 1px solid black;
+}
+
+.schichtplanTableCol2 {
+	text-align: center;
+}
+
+.headerTable {
+/* 	border: 1px solid black; */
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.headerTableCol1 {
+	width: 25%;
+/* 	border: 1px solid black; */
+}
+
+.headerTableCol2 {
+/* 	border: 1px solid black; */
+	text-align: center;
+	vertical-align: middle;
+}
+
+.headerTableCol3 {
+	width: 25%;
+/* 	border: 1px solid black; */
+	text-align: right;
+}
+
+#line {
+	width: 100%;
+	height: 5px;
+	background: #FAAC58;	
+	margin-bottom: 20px;
+}
+
+/* .logInTable { */
+/* 	border: 1px solid black; */
+/* 	width: 100%; */
+/* 	border-collapse: collapse; */
+	
+/* } */
+
+/* .logInTableCol1 { */
+/* 	border: 1px solid black; */
+/* } */
+
+/* .logInTableCol2 { */
+/* 	border: 1px solid black; */
+/* } */
+
+.userNameField {
+	width: 100%;
+	
+}
+
+.passwordField {
+	width: 100%;
+	
+}
+
+.inputCorrection {
+	padding-right:4px;
+	padding-left:1px;
+	margin-right:2px
+}
+
+.logInButton {
+	margin-top: 20px;
+	width: 100%;
+}
