@@ -66,15 +66,6 @@ public class UserDAOFileImpl implements UserDAO {
 		return userList;
 	}
 
-	//for testing
-//	private void generateTestAdmin() {
-//		Map<String,User> userMap = new HashMap<>();
-//		userMap.put("admin", new User("admin", "123", UserRoleEnum.ADMIN.toString()));
-//		userMap.put("user", new User("user", "123", UserRoleEnum.USER.toString(),50,50,"D"));
-//		writeAllUser(userMap);
-//		
-//	}
-
 	private Map<String, User> readAllUser() {
 		Map<String,User> userMap = new HashMap<>();
 		
